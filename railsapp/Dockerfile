@@ -1,6 +1,7 @@
 FROM ubuntu
 MAINTAINER Hemslo Wang <hemslo.wang@gmail.com>
 
+RUN apt-get update
 RUN apt-get install -y software-properties-common python-software-properties
 RUN add-apt-repository -y ppa:nginx/stable
 RUN add-apt-repository -y ppa:chris-lea/node.js
