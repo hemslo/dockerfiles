@@ -6,7 +6,7 @@ RUN apt-get install -y openssh-server supervisor git-core \
         curl autoconf bison zlib1g zlib1g-dev build-essential \
         libssl-dev libreadline-dev libreadline6 libreadline6-dev \
         libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev \
-        libcurl4-openssl-dev python-software-properties
+        libcurl4-openssl-dev software-properties-common
 
 # Install Ruby
 RUN git clone https://github.com/sstephenson/ruby-build.git /root/ruby-build
