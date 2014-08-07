@@ -17,3 +17,9 @@ RUN gem install bundler
 
 RUN npm install -g bower
 
+Add nginx.conf /etc/nginx/nginx.conf
+
+RUN adduser --disabled-password --home=/home/deployer deployer
+
+RUN mkdir /var/run/sshd
+
