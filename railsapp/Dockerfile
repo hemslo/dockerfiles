@@ -27,7 +27,7 @@ RUN npm install -g bower
 
 # Add deployer user
 RUN adduser --disabled-password --home=/home/deployer deployer
-gg
+
 RUN mkdir -p /var/run/sshd
 RUN sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 RUN sed -ri 's/#UsePAM no/UsePAM no/g' /etc/ssh/sshd_config
