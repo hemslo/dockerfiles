@@ -11,5 +11,6 @@ ADD requirements.txt /src/requirements.txt
 RUN pip install -r /src/requirements.txt
 
 EXPOSE 6800
-ENTRYPOINT ["/usr/bin/scrapyd"]
+
+CMD ["/usr/bin/scrapyd"]
 
