@@ -2,7 +2,7 @@ FROM ubuntu
 MAINTAINER Hemslo Wang <hemslo.wang@gmail.com>
 
 RUN apt-get update
-RUN apt-get install git-core curl zlib1g-dev build-essential libssl-dev \
+RUN apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev \
         libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev \
         libxslt1-dev libcurl4-openssl-dev python-software-properties
 
@@ -18,9 +18,9 @@ RUN exec $SHELL
 RUN rbenv install 2.1.2
 RUN rbenv global 2.1.2
 
-RUN add-apt-repository ppa:chris-lea/node.js
+RUN add-apt-repository -y ppa:chris-lea/node.js
 RUN apt-get update
-RUN apt-get install nodejs
+RUN apt-get install -y nodejs
 
 RUN npm install -g bower
 
