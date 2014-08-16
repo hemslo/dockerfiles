@@ -2,21 +2,18 @@ FROM ubuntu
 MAINTAINER Hemslo Wang <hemslo.wang@gmail.com>
 
 RUN apt-get update
-RUN apt-get install -y git-core curl zlib1g-dev build-essential libssl-dev \
-        libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev \
-        libxslt1-dev libcurl4-openssl-dev python-software-properties
 
-RUN git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
-RUN echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-RUN echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-RUN exec $SHELL
+RUN apt-get install -y  git-core curl autoconf bison zlib1g zlib1g-dev \
+        build-essential libssl-dev libreadline-dev libreadline6 \
+        libreadline6-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev \
+        libxslt1-dev libcurl4-openssl-dev software-properties-common \
+        python-software-properties
 
-RUN git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-RUN echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
-RUN exec $SHELL
-
-RUN rbenv install 2.1.2
-RUN rbenv global 2.1.2
+# Install Ruby
+RUN git clone https://github.com/sstephenson/ruby-build.git /root/ruby-build
+RUN cd /root/ruby-build && ./install.sh
+RUN ruby-build 2.1.2 /usr/local
+RUN gem install bundler
 
 RUN add-apt-repository -y ppa:chris-lea/node.js
 RUN apt-get update
