@@ -24,4 +24,4 @@ WORKDIR /data
 
 EXPOSE 3000
 
-CMD ["bundle exec rails s"]
+CMD ["bundle", "exec", "rails", "s"]
