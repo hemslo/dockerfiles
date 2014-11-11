@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y \
 ADD requirements.txt /src/requirements.txt
 RUN pip install -r /src/requirements.txt
 
+VOLUME ["/var/log/scrapyd", "/var/lib/scrapyd"]
+
 EXPOSE 6800
 
 CMD ["/usr/bin/scrapyd"]
