@@ -1,0 +1,56 @@
+path:
+  data: /data/data
+  logs: /data/log
+  work: /data/work
+
+index:
+  analysis:
+    filter:
+      nGram_2_to_20:
+        type: edgeNGram
+        min_gram: 2
+        max_gram: 20
+      prefix_pinyin:
+        type: pinyin
+        first_letter: only
+        padding_char: ''
+    analyzer:
+      ik:
+        alias: [news_analyzer_ik,ik_analyzer]
+        type: org.elasticsearch.index.analysis.IkAnalyzerProvider
+      full_pinyin:
+        type: custom
+        tokenizer: ik
+        filter:
+          - pinyin
+          - lowercase
+          - trim
+          - unique
+      prefix_pinyin:
+        type: custom
+        tokenizer: ik
+        filter:
+          - prefix_pinyin
+          - lowercase
+          - trim
+          - unique
+      full_pinyin_ngram:
+        type: custom
+        tokenizer: ik
+        filter:
+          - pinyin
+          - lowercase
+          - nGram_2_to_20
+          - trim
+          - unique
+      prefix_pinyin_ngram:
+        type: custom
+        tokenizer: ik
+        filter:
+          - prefix_pinyin
+          - lowercase
+          - nGram_2_to_20
+          - trim
+          - unique
+
+index.analysis.analyzer.default.type : "ik"
