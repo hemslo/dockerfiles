@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:14.04
 MAINTAINER Hemslo Wang <hemslo.wang@gmail.com>
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 627220E7

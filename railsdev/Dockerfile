@@ -1,16 +1,14 @@
-FROM ubuntu
-MAINTAINER Hemslo Wang <hemslo.wang@gmail.com>
-
+FROM ubuntu:14.04
 RUN apt-get update && apt-get install -y \
-    git-core curl autoconf bison zlib1g zlib1g-dev build-essential libssl-dev \
-    libreadline-dev libreadline6 libreadline6-dev libncurses5-dev libyaml-dev \
-    libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev \
-    software-properties-common python-software-properties libmysqlclient-dev
+    git-core curl autoconf bison  zlib1g-dev build-essential \
+    libcurl4-openssl-dev libncurses5-dev libreadline-dev libreadline6-dev \
+    libssl-dev libxml2-dev libxslt1-dev libyaml-dev libsqlite3-dev sqlite3 \
+    libmysqlclient-dev python-software-properties software-properties-common
 
 # Install Ruby
 RUN git clone https://github.com/sstephenson/ruby-build.git /root/ruby-build
 RUN cd /root/ruby-build && ./install.sh
-RUN ruby-build 2.1.3 /usr/local
+RUN ruby-build 2.1.5 /usr/local
 RUN gem install bundler
 
 RUN curl -sL https://deb.nodesource.com/setup | bash -
