@@ -1,4 +1,4 @@
-FROM phusion/passenger-customizable:0.9.10
+FROM phusion/passenger-customizable:latest
 MAINTAINER Hemslo <hemslo.wang@gmail.com>
 
 RUN /pd_build/ruby2.2.sh
