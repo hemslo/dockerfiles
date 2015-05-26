@@ -9,8 +9,9 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN npm install -g bower
 RUN rm /etc/nginx/sites-enabled/default
-COPY nginx_gzip.conf /etc/nginx/main.d/gzip.conf
+COPY nginx_conf_d_default.conf /etc/nginx/conf.d/default.conf
 RUN rm -f /etc/service/sshd/down
+RUN rm -f /etc/service/nginx/down
 
 VOLUME ["/etc/nginx/sites-enabled", "/etc/nginx/ssl", "/var/log/nginx", "/home/app/.ssh"]
 
