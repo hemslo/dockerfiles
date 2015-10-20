@@ -7,3 +7,4 @@ RUN apt-get update && apt-get install -y \
     cmake \
     && apt-get upgrade -y -o Dpkg::Options::="--force-confold" \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN npm install -g bower
